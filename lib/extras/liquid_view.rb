@@ -37,6 +37,8 @@ class LiquidView
     
     if content_for_layout = @view.instance_variable_get("@content_for_layout")
       assigns['content_for_layout'] = content_for_layout
+    elsif @view.content_for?(:layout)
+      assigns["content_for_layout"] = @view.content_for(:layout)
     end
     assigns.merge!(local_assigns.stringify_keys)
     
